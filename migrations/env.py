@@ -8,7 +8,7 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from src.models.user import table_registry
+from src.models import table_registry 
 from src.core.settings import Settings
 
 config = context.config
