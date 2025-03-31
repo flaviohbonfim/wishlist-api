@@ -12,9 +12,8 @@ from ..core.security import (
     get_password_hash,
 )
 from ..models.user import User
+from ..schemas.common import FilterPage, Message
 from ..schemas.user import (
-    FilterPage,
-    Message,
     UserList,
     UserPublic,
     UserSchema,

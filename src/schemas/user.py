@@ -20,17 +20,3 @@ class UserDB(UserSchema):
 
 class UserList(BaseModel):
     users: list[UserPublic]
-
-
-class Token(BaseModel):
-    access_token: str
-    token_type: str
-
-
-class FilterPage(BaseModel):
-    offset: int = 0
-    limit: int = 100
-
-
-class Message(BaseModel):
-    message: str
