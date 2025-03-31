@@ -1,7 +1,6 @@
 from contextlib import contextmanager
 from datetime import datetime
 
-import factory
 import pytest
 import pytest_asyncio
 from fastapi.testclient import TestClient
@@ -12,7 +11,8 @@ from testcontainers.postgres import PostgresContainer
 from src.app import app
 from src.core.db import get_session
 from src.core.security import get_password_hash
-from src.models.user import User, table_registry
+from src.models import table_registry
+from tests.factories import UserFactory
 
 
 @pytest.fixture
@@ -101,12 +101,3 @@ def token(client, user):
         data={'username': user.email, 'password': user.clean_password},
     )
     return response.json()['access_token']
-
-
-class UserFactory(factory.Factory):
-    class Meta:
-        model = User
-
-    username = factory.Sequence(lambda n: f'test{n}')
-    email = factory.LazyAttribute(lambda obj: f'{obj.username}@test.com')
-    password = factory.LazyAttribute(lambda obj: f'{obj.username}@example.com')
