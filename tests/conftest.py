@@ -12,7 +12,7 @@ from src.app import app
 from src.core.db import get_session
 from src.core.security import get_password_hash
 from src.models import table_registry
-from tests.factories import UserFactory
+from tests.factories import UserFactory, WishlistFactory
 
 
 @pytest.fixture
@@ -101,3 +101,14 @@ def token(client, user):
         data={'username': user.email, 'password': user.clean_password},
     )
     return response.json()['access_token']
+
+
+@pytest_asyncio.fixture
+async def wishlist(session, user):
+    wishlist = WishlistFactory(user_id=user.id)
+
+    session.add(wishlist)
+    await session.commit()
+    await session.refresh(wishlist)
+
+    return wishlist
