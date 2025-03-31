@@ -1,0 +1,25 @@
+services:
+  wishlist_database:
+    image: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: wishlist
+      POSTGRES_DB: wishlist_db
+      POSTGRES_PASSWORD: P4ssw0rd
+    ports:
+      - "5433:5432"
+
+  wishlist_api:
+    image: wishlist_api
+    entrypoint: ./entrypoint.sh
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - wishlist_database
+    env_file:
+      - .env.docker
+
+volumes:
+  pgdata:
