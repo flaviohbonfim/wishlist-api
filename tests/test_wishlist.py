@@ -50,3 +50,27 @@ async def test_delete_wishlist_product(session, client, user, token):
 
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'Product deleted from wishlist'}
+
+
+@pytest.mark.asyncio
+async def test_create_wishlist_duplicated_product(
+    session, user, client, token
+):
+    wishlist = WishlistFactory(user_id=user.id)
+
+    session.add(wishlist)
+    await session.commit()
+
+    response = client.post(
+        '/wishlists/',
+        headers={'Authorization': f'Bearer {token}'},
+        json={
+            'user_id': 1,
+            'product_id': 1,
+        },
+    )
+    assert response.json() == {
+        'detail': 'Este produto já está na sua lista de desejos.',
+    }
+
+    assert response.status_code == HTTPStatus.CONFLICT
