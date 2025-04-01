@@ -30,9 +30,7 @@ async def test_delete_wishlist(session, client, user, token):
     session.add(wishlist)
     await session.commit()
 
-    response = client.delete(
-        '/wishlists/', headers={'Authorization': f'Bearer {token}'}
-    )
+    response = client.delete('/wishlists/', headers={'Authorization': f'Bearer {token}'})
 
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'Wishlist deleted'}
@@ -55,9 +53,7 @@ async def test_delete_wishlist_product(session, client, user, token):
 
 
 @pytest.mark.asyncio
-async def test_create_wishlist_duplicated_product(
-    session, user, client, token
-):
+async def test_create_wishlist_duplicated_product(session, user, client, token):
     wishlist = WishlistFactory(user_id=user.id)
 
     session.add(wishlist)
@@ -97,13 +93,10 @@ def test_read_wishlists_with_wishlists(client, wishlist, token):
     wishlist_dict = defaultdict(list)
 
     for wlist in [wishlist_schema]:
-        wishlist_dict[wlist['user_id']].append({
-            'product_id': wlist['product_id']
-        })
+        wishlist_dict[wlist['user_id']].append({'product_id': wlist['product_id']})
 
     grouped_wishlists = [
-        {'user_id': user_id, 'products': products}
-        for user_id, products in wishlist_dict.items()
+        {'user_id': user_id, 'products': products} for user_id, products in wishlist_dict.items()
     ]
 
     assert response.json() == {'wishlists': grouped_wishlists}

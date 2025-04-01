@@ -27,9 +27,7 @@ router = APIRouter(prefix='/users', tags=['users'])
 @router.post('/', status_code=HTTPStatus.CREATED, response_model=UserPublic)
 async def create_user(user: UserSchema, session: Session):
     db_user = await session.scalar(
-        select(User).where(
-            (User.username == user.username) | (User.email == user.email)
-        )
+        select(User).where((User.username == user.username) | (User.email == user.email))
     )
 
     if db_user:
@@ -46,9 +44,7 @@ async def create_user(user: UserSchema, session: Session):
 
     hashed_password = get_password_hash(user.password)
 
-    db_user = User(
-        username=user.username, password=hashed_password, email=user.email
-    )
+    db_user = User(username=user.username, password=hashed_password, email=user.email)
     session.add(db_user)
     await session.commit()
     await session.refresh(db_user)
@@ -57,9 +53,7 @@ async def create_user(user: UserSchema, session: Session):
 
 
 @router.get('/', response_model=UserList)
-async def read_users(
-    session: Session, filter_users: Annotated[FilterPage, Query()]
-):
+async def read_users(session: Session, filter_users: Annotated[FilterPage, Query()]):
     query = await session.scalars(
         select(User).offset(filter_users.offset).limit(filter_users.limit)
     )
@@ -76,9 +70,7 @@ async def update_user(
     current_user: CurrentUser,
 ):
     if current_user.id != user_id:
-        raise HTTPException(
-            status_code=HTTPStatus.FORBIDDEN, detail='Not enough permissions'
-        )
+        raise HTTPException(status_code=HTTPStatus.FORBIDDEN, detail='Not enough permissions')
     try:
         current_user.username = user.username
         current_user.password = get_password_hash(user.password)
@@ -102,9 +94,7 @@ async def delete_user(
     current_user: CurrentUser,
 ):
     if current_user.id != user_id:
-        raise HTTPException(
-            status_code=HTTPStatus.FORBIDDEN, detail='Not enough permissions'
-        )
+        raise HTTPException(status_code=HTTPStatus.FORBIDDEN, detail='Not enough permissions')
 
     await session.delete(current_user)
     await session.commit()
