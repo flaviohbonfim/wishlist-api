@@ -16,21 +16,20 @@ from ..core.security import (
 )
 from ..models.user import User
 from ..schemas.common import FilterPage, Message
+from ..services.product import fetch_product
 
 Session = Annotated[AsyncSession, Depends(get_session)]
 CurrentUser = Annotated[User, Depends(get_current_user)]
 router = APIRouter(prefix='/wishlists', tags=['wishlists'])
 
 
-@router.post(
-    '/', status_code=HTTPStatus.CREATED, response_model=WishlistPublic
-)
-async def create_wishlist(
-    wishlist: WishlistSchema, session: Session, current_user: CurrentUser
-):
-    db_wishlist = Wishlist(
-        user_id=current_user.id, product_id=wishlist.product_id
-    )
+@router.post('/', status_code=HTTPStatus.CREATED, response_model=WishlistPublic)
+async def create_wishlist(wishlist: WishlistSchema, session: Session, current_user: CurrentUser):
+    product = await fetch_product(wishlist.product_id)
+    if not product:
+        raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail='Produto não encontrado.')
+
+    db_wishlist = Wishlist(user_id=current_user.id, product_id=wishlist.product_id)
     session.add(db_wishlist)
     try:
         await session.commit()
@@ -62,13 +61,10 @@ async def read_wishlist(
     wishlist_dict = defaultdict(list)
 
     for wishlist in wishlists:
-        wishlist_dict[wishlist.user_id].append({
-            'product_id': wishlist.product_id
-        })
+        wishlist_dict[wishlist.user_id].append({'product_id': wishlist.product_id})
 
     grouped_wishlists = [
-        {'user_id': user_id, 'products': products}
-        for user_id, products in wishlist_dict.items()
+        {'user_id': user_id, 'products': products} for user_id, products in wishlist_dict.items()
     ]
 
     return {'wishlists': grouped_wishlists}
@@ -95,8 +91,7 @@ async def delete_wishlist_product(
     current_user: CurrentUser,
 ):
     stmt = delete(Wishlist).where(
-        (Wishlist.user_id == current_user.id)
-        & (Wishlist.product_id == prod_id)
+        (Wishlist.user_id == current_user.id) & (Wishlist.product_id == prod_id)
     )
 
     await session.execute(stmt)
