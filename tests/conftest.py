@@ -12,7 +12,7 @@ from src.app import app
 from src.core.db import get_session
 from src.core.security import get_password_hash
 from src.models import table_registry
-from tests.factories import UserFactory, WishlistFactory
+from tests.factories import ProductFactory, UserFactory, WishlistFactory
 
 
 @pytest.fixture
@@ -104,11 +104,22 @@ def token(client, user):
 
 
 @pytest_asyncio.fixture
-async def wishlist(session, user):
-    wishlist = WishlistFactory(user_id=user.id)
+async def wishlist(session, user, product):
+    wishlist = WishlistFactory(user_id=user.id, product_id=product.id)
 
     session.add(wishlist)
     await session.commit()
     await session.refresh(wishlist)
 
     return wishlist
+
+
+@pytest_asyncio.fixture
+async def product(session):
+    product = ProductFactory()
+
+    session.add(product)
+    await session.commit()
+    await session.refresh(product)
+
+    return product

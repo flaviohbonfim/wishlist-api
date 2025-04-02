@@ -3,6 +3,7 @@ from dataclasses import asdict
 import pytest
 from sqlalchemy import select
 
+from src.models.product import Product
 from src.models.user import User
 from src.models.wishlist import Wishlist
 
@@ -27,11 +28,11 @@ async def test_create_user(session, mock_db_time):
 
 
 @pytest.mark.asyncio
-async def test_create_wishlist(session, user: User, mock_db_time):
+async def test_create_wishlist(session, user: User, product: Product, mock_db_time):
     with mock_db_time(model=Wishlist) as time:
         wishlist = Wishlist(
             user_id=user.id,
-            product_id=1,
+            product_id=product.id,
         )
         session.add(wishlist)
         await session.commit()
@@ -48,10 +49,10 @@ async def test_create_wishlist(session, user: User, mock_db_time):
 
 
 @pytest.mark.asyncio
-async def test_user_wishlist_relationship(session, user: User):
+async def test_user_wishlist_relationship(session, user: User, product: Product):
     wishlist = Wishlist(
         user_id=user.id,
-        product_id=1,
+        product_id=product.id,
     )
 
     session.add(wishlist)

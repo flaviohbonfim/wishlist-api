@@ -1,6 +1,7 @@
 import factory
 import factory.fuzzy
 
+from src.models.product import Product
 from src.models.user import User
 from src.models.wishlist import Wishlist
 
@@ -20,3 +21,13 @@ class WishlistFactory(factory.Factory):
 
     user_id = 1
     product_id = 1
+
+
+class ProductFactory(factory.Factory):
+    class Meta:
+        model = Product
+
+    id = 1
+    title = factory.fuzzy.FuzzyText(length=10)
+    price = factory.fuzzy.FuzzyFloat(1.0, 100.0)
+    image = 'https://example.com/image.jpg'

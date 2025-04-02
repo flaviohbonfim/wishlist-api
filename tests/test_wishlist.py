@@ -1,19 +1,18 @@
-from collections import defaultdict
 from http import HTTPStatus
 
 import pytest
 
-from src.schemas.wishlist import WishlistPublic
+from src.models.product import Product
 from tests.factories import WishlistFactory
 
 
-def test_create_wishlist(client, token):
+def test_create_wishlist(client, token, product: Product):
     response = client.post(
         '/wishlists/',
         headers={'Authorization': f'Bearer {token}'},
         json={
             'user_id': 1,
-            'product_id': 1,
+            'product_id': product.id,
         },
     )
     assert response.json() == {
@@ -24,8 +23,8 @@ def test_create_wishlist(client, token):
 
 
 @pytest.mark.asyncio
-async def test_delete_wishlist(session, client, user, token):
-    wishlist = WishlistFactory(user_id=user.id)
+async def test_delete_wishlist(session, client, user, product, token):
+    wishlist = WishlistFactory(user_id=user.id, product_id=product.id)
 
     session.add(wishlist)
     await session.commit()
@@ -37,8 +36,8 @@ async def test_delete_wishlist(session, client, user, token):
 
 
 @pytest.mark.asyncio
-async def test_delete_wishlist_product(session, client, user, token):
-    wishlist = WishlistFactory(user_id=user.id)
+async def test_delete_wishlist_product(session, client, product, user, token):
+    wishlist = WishlistFactory(user_id=user.id, product_id=product.id)
 
     session.add(wishlist)
     await session.commit()
@@ -53,8 +52,8 @@ async def test_delete_wishlist_product(session, client, user, token):
 
 
 @pytest.mark.asyncio
-async def test_create_wishlist_duplicated_product(session, user, client, token):
-    wishlist = WishlistFactory(user_id=user.id)
+async def test_create_wishlist_duplicated_product(session, user, product, client, token):
+    wishlist = WishlistFactory(user_id=user.id, product_id=product.id)
 
     session.add(wishlist)
     await session.commit()
@@ -84,20 +83,33 @@ def test_read_wishlists(client, token):
     assert response.json() == {'wishlists': []}
 
 
-def test_read_wishlists_with_wishlists(client, wishlist, token):
-    wishlist_schema = WishlistPublic.model_validate(wishlist).model_dump()
+@pytest.mark.asyncio
+async def test_read_wishlists_with_wishlists(session, client, user, product, token):
+    wishlist = WishlistFactory(user_id=user.id, product_id=product.id)
+
+    session.add(wishlist)
+    await session.commit()
+
     response = client.get(
         '/wishlists/',
         headers={'Authorization': f'Bearer {token}'},
     )
-    wishlist_dict = defaultdict(list)
 
-    for wlist in [wishlist_schema]:
-        wishlist_dict[wlist['user_id']].append({'product_id': wlist['product_id']})
+    expected_response = {
+        'wishlists': [
+            {
+                'user_id': user.id,
+                'products': [
+                    {
+                        'product_id': product.id,
+                        'title': product.title,
+                        'price': product.price,
+                        'image': product.image,
+                    }
+                ],
+            }
+        ]
+    }
 
-    grouped_wishlists = [
-        {'user_id': user_id, 'products': products} for user_id, products in wishlist_dict.items()
-    ]
-
-    assert response.json() == {'wishlists': grouped_wishlists}
     assert response.status_code == HTTPStatus.OK
+    assert response.json() == expected_response
