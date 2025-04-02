@@ -13,6 +13,7 @@ API para gerenciamento de listas de produtos favoritos de usuários, permitindo 
 - Alembic
 - JWT 
 - Circuit Breaker
+- Redis (Cache)
 
 ## Requisitos
 
@@ -20,6 +21,7 @@ API para gerenciamento de listas de produtos favoritos de usuários, permitindo 
 - Python 3.13+
 - Poetry
 - SQLite ou PostgreSQL
+- Redis
 
 ### Para execução com Docker
 - Docker
@@ -72,6 +74,7 @@ DATABASE_URL="sqlite+aiosqlite:///wishlist.db"
 SECRET_KEY="sua-chave-secreta"
 ALGORITHM="HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES=30
+REDIS_URL="redis://localhost:6379/0"
 ```
 
 4. Execute as migrações do banco de dados:
@@ -99,6 +102,7 @@ Após iniciar a aplicação, você pode acessar a documentação interativa da A
 - **Usuários**: CRUD completo de usuários
 - **Wishlist**: Adicionar, listar e remover produtos da lista de desejos
 - **Produtos**: Integração com API externa para busca de produtos
+- **Cache com Redis**: Armazenamento em cache de dados frequentemente acessados para melhorar a performance
 
 ## Testes
 
@@ -131,6 +135,6 @@ wishlist-api/
 ├── tests/                   # Testes automatizados
 └── migrations/              # Migrações do banco de dados
 ```
-## Circuit Breaker
+## Considerações sobre o Teste
 
-O projeto usa o padrão Circuit Breaker para tornar a comunicação com APIs externas mais resiliente. Se houver falhas repetidas, o sistema reage de forma inteligente, evitando sobrecarregar serviços que estão fora do ar e garantindo uma degradação controlada.
+Devido ao cenário descrito para esse teste (_API de produtos fora do ar_), foi implementado um **Circuit Breaker** para ter opção de controle e fallback na busca dos produtos durante a criação de uma **Wishlist**. O fallback proposto foi através de busca das informações dos produtos no cache (**Redis**). Em um projeto real, provavelmente a estratégia seria diferente, pois geralmente o cache é implementado como primeira opção de busca, pois é mais rápido e menos custoso. Porém, para esse teste, foi implementado de forma simples, pois o objetivo era apenas demonstrar o uso do **Circuit Breaker**.
