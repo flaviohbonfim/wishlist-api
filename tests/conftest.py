@@ -12,6 +12,8 @@ from src.app import app
 from src.core.db import get_session
 from src.core.security import get_password_hash
 from src.models import table_registry
+from src.models.product import Product as ProductModel
+from src.schemas.product import Product
 from tests.factories import ProductFactory, UserFactory, WishlistFactory
 
 
@@ -123,3 +125,23 @@ async def product(session):
     await session.refresh(product)
 
     return product
+
+
+@pytest.fixture
+def product_data():
+    return {
+        'id': 1,
+        'title': 'Test Product',
+        'price': 99.99,
+        'image': 'http://example.com/image.jpg',
+    }
+
+
+@pytest.fixture
+def product_schema(product_data):
+    return Product(**product_data)
+
+
+@pytest.fixture
+def product_model(product_data):
+    return ProductModel(**product_data)
