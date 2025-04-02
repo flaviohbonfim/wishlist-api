@@ -74,7 +74,10 @@ DATABASE_URL="sqlite+aiosqlite:///wishlist.db"
 SECRET_KEY="sua-chave-secreta"
 ALGORITHM="HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES=30
-REDIS_URL="redis://localhost:6379/0"
+REDIS_HOST="localhost"
+REDIS_PORT=6379
+REDIS_DB=0
+PRODUCTS_API_URL="http://challenge-api.luizalabs.com/api/product"
 ```
 
 4. Execute as migrações do banco de dados:
@@ -132,9 +135,10 @@ wishlist-api/
 │   ├── routers/             # Rotas da API
 │   ├── schemas/             # Esquemas Pydantic
 │   └── services/            # Serviços e lógica de negócio
+├── scripts/                 # Scripts de apoio ao projeto (init)
 ├── tests/                   # Testes automatizados
 └── migrations/              # Migrações do banco de dados
 ```
-## Considerações sobre o Teste
+## Considerações sobre o teste
 
 Devido ao cenário descrito para esse teste (_API de produtos fora do ar_), foi implementado um **Circuit Breaker** para ter opção de controle e fallback na busca dos produtos durante a criação de uma **Wishlist**. O fallback proposto foi através de busca das informações dos produtos no cache (**Redis**). Em um projeto real, provavelmente a estratégia seria diferente, pois geralmente o cache é implementado como primeira opção de busca, pois é mais rápido e menos custoso. Porém, para esse teste, foi implementado de forma simples, pois o objetivo era apenas demonstrar o uso do **Circuit Breaker**.
