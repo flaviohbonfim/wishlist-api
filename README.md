@@ -105,7 +105,7 @@ Após iniciar a aplicação, você pode acessar a documentação interativa da A
 - **Usuários**: CRUD completo de usuários
 - **Wishlist**: Adicionar, listar e remover produtos da lista de desejos
 - **Produtos**: Integração com API externa para busca de produtos
-- **Cache com Redis**: Armazenamento em cache de dados frequentemente acessados para melhorar a performance
+- **Cache com Redis**: Armazenamento em cache dos dados de produtos como fallback da API externa
 
 ## Testes
 
