@@ -134,6 +134,7 @@ def product_data():
         'title': 'Test Product',
         'price': 99.99,
         'image': 'http://example.com/image.jpg',
+        'review_score': 4.5,
     }
 
 

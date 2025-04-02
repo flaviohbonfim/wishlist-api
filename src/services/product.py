@@ -38,7 +38,11 @@ async def get_product_from_db(product_id: int, session: AsyncSession) -> Optiona
 async def save_product_to_db(product: Product, session: AsyncSession) -> ProductModel:
     """Salva o produto no banco de dados."""
     db_product = ProductModel(
-        id=product.id, title=product.title, price=product.price, image=product.image
+        id=product.id,
+        title=product.title,
+        price=product.price,
+        image=product.image,
+        review_score=product.reviewScore,
     )
     session.add(db_product)
     await session.commit()

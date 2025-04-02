@@ -16,6 +16,7 @@ class WishlistProduct(BaseModel):
     title: str
     price: float
     image: str
+    review_score: float | None = None
 
 
 class WishlistUserGroup(BaseModel):

@@ -14,4 +14,5 @@ class Product:
     title: Mapped[str] = mapped_column()
     price: Mapped[float] = mapped_column()
     image: Mapped[str] = mapped_column()
+    review_score: Mapped[float] = mapped_column(nullable=True)
     created_at: Mapped[datetime] = mapped_column(init=False, server_default=func.now())

@@ -55,6 +55,7 @@ async def read_wishlist_service(
             'title': product.title,
             'price': product.price,
             'image': product.image,
+            'review_score': product.review_score,
         })
 
     grouped_wishlists = [

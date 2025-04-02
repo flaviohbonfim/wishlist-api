@@ -105,6 +105,7 @@ async def test_read_wishlists_with_wishlists(session, client, user, product, tok
                         'title': product.title,
                         'price': product.price,
                         'image': product.image,
+                        'review_score': product.review_score,
                     }
                 ],
             }

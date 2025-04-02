@@ -31,3 +31,4 @@ class ProductFactory(factory.Factory):
     title = factory.fuzzy.FuzzyText(length=10)
     price = factory.fuzzy.FuzzyFloat(1.0, 100.0)
     image = 'https://example.com/image.jpg'
+    review_score = factory.fuzzy.FuzzyFloat(0.0, 5.0)
