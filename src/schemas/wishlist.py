@@ -13,6 +13,9 @@ class WishlistPublic(BaseModel):
 
 class WishlistProduct(BaseModel):
     product_id: int
+    title: str
+    price: float
+    image: str
 
 
 class WishlistUserGroup(BaseModel):

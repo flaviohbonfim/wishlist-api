@@ -7,6 +7,7 @@ from sqlalchemy import delete, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from src.models.product import Product
 from src.models.wishlist import Wishlist
 from src.schemas.wishlist import WishlistList, WishlistPublic, WishlistSchema
 
@@ -25,7 +26,7 @@ router = APIRouter(prefix='/wishlists', tags=['wishlists'])
 
 @router.post('/', status_code=HTTPStatus.CREATED, response_model=WishlistPublic)
 async def create_wishlist(wishlist: WishlistSchema, session: Session, current_user: CurrentUser):
-    product = await fetch_product(wishlist.product_id)
+    product = await fetch_product(wishlist.product_id, session)
     if not product:
         raise HTTPException(status_code=HTTPStatus.NOT_FOUND, detail='Produto não encontrado.')
 
@@ -50,18 +51,24 @@ async def read_wishlist(
     filter_users: Annotated[FilterPage, Query()],
     current_user: CurrentUser,
 ):
-    query = await session.scalars(
-        select(Wishlist)
+    query = await session.execute(
+        select(Wishlist, Product)
+        .join(Product, Wishlist.product_id == Product.id)
         .where(Wishlist.user_id == current_user.id)
         .offset(filter_users.offset)
         .limit(filter_users.limit)
     )
-    wishlists = query.all()
+    results = query.all()
 
     wishlist_dict = defaultdict(list)
 
-    for wishlist in wishlists:
-        wishlist_dict[wishlist.user_id].append({'product_id': wishlist.product_id})
+    for wishlist, product in results:
+        wishlist_dict[wishlist.user_id].append({
+            'product_id': product.id,
+            'title': product.title,
+            'price': product.price,
+            'image': product.image,
+        })
 
     grouped_wishlists = [
         {'user_id': user_id, 'products': products} for user_id, products in wishlist_dict.items()
