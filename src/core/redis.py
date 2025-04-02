@@ -5,12 +5,14 @@ from typing import Any, Dict, List, Optional, Union
 import redis.asyncio as redis
 from redis.asyncio.connection import ConnectionPool
 
+from .settings import Settings
+
 logger = logging.getLogger('uvicorn')
 
 # Redis configuration
-REDIS_HOST = 'localhost'  # Nome do serviço no docker-compose
-REDIS_PORT = 6379
-REDIS_DB = 0
+REDIS_HOST = Settings().REDIS_HOST
+REDIS_PORT = Settings().REDIS_PORT
+REDIS_DB = Settings().REDIS_DB
 
 # Initialize Redis connection pool
 redis_pool = ConnectionPool(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB, decode_responses=True)

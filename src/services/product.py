@@ -1,4 +1,5 @@
 import logging
+import os
 import ssl
 from http import HTTPStatus
 from typing import Dict, Optional
@@ -13,14 +14,20 @@ from src.core.redis import get_json
 from src.models.product import Product as ProductModel
 from src.schemas.product import Product
 
+from .settings import Settings
+
 logger = logging.getLogger('uvicorn')
 
 
 circuit_breaker = AsyncCircuitBreaker(fail_max=3, reset_timeout=10)
 
+# Configuração do SSL para ignorar erros de certificado
+# problema com host 'challenge-api.luizalabs.com'
 ssl_context = ssl.create_default_context()
 ssl_context.check_hostname = False
 ssl_context.verify_mode = ssl.CERT_NONE
+
+PRODUCTS_API_URL = Settings().PRODUCTS_API_URL
 
 
 async def get_product_from_db(product_id: int, session: AsyncSession) -> Optional[ProductModel]:
@@ -56,7 +63,7 @@ async def fetch_product(product_id: int, session: AsyncSession) -> Optional[Prod
             id=db_product.id, title=db_product.title, price=db_product.price, image=db_product.image
         )
 
-    url = f'http://challenge-api.luizalabs.com/api/product/{product_id}/'
+    url = f'{PRODUCTS_API_URL}/{product_id}/'
     logger.info(
         f'Produto não encontrado no banco. Tentando buscar o produto {product_id} na API...'
     )
