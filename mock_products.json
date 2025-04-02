@@ -1,0 +1,388 @@
+[
+  {
+    "id": 1,
+    "title": "Apple AirPods Max Silver",
+    "price": 549.99,
+    "reviewScore": 3.11,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20AirPods%20Max%20Silver/thumbnail.png",
+    "brand": "Apple"
+  },
+  {
+    "id": 2,
+    "title": "Apple Airpower Wireless Charger",
+    "price": 79.99,
+    "reviewScore": 4.51,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Airpower%20Wireless%20Charger/thumbnail.png",
+    "brand": "Apple"
+  },
+  {
+    "id": 3,
+    "title": "Apple HomePod Mini Cosmic Grey",
+    "price": 99.99,
+    "reviewScore": 4.51,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20HomePod%20Mini%20Cosmic%20Grey/thumbnail.png",
+    "brand": "Apple"
+  },
+  {
+    "id": 4,
+    "title": "Apple iPhone Charger",
+    "price": 19.99,
+    "reviewScore": 3.03,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20iPhone%20Charger/thumbnail.png",
+    "brand": "Apple"
+  },
+  {
+    "id": 5,
+    "title": "Apple MagSafe Battery Pack",
+    "price": 99.99,
+    "reviewScore": 2.61,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20MagSafe%20Battery%20Pack/thumbnail.png",
+    "brand": "Apple"
+  },
+  {
+    "id": 6,
+    "title": "Apple Watch Series 4 Gold",
+    "price": 349.99,
+    "reviewScore": 4.42,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/Apple%20Watch%20Series%204%20Gold/thumbnail.png",
+    "brand": "Apple"
+  },
+  {
+    "id": 7,
+    "title": "Beats Flex Wireless Earphones",
+    "price": 49.99,
+    "reviewScore": 4.17,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/Beats%20Flex%20Wireless%20Earphones/thumbnail.png",
+    "brand": "Beats"
+  },
+  {
+    "id": 8,
+    "title": "iPhone 12 Silicone Case with MagSafe Plum",
+    "price": 29.99,
+    "reviewScore": 4.41,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/iPhone%2012%20Silicone%20Case%20with%20MagSafe%20Plum/thumbnail.png",
+    "brand": "Apple"
+  },
+  {
+    "id": 9,
+    "title": "Monopod",
+    "price": 19.99,
+    "reviewScore": 2.99,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/Monopod/thumbnail.png",
+    "brand": "TechGear"
+  },
+  {
+    "id": 10,
+    "title": "Selfie Lamp with iPhone",
+    "price": 14.99,
+    "reviewScore": 2.84,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/Selfie%20Lamp%20with%20iPhone/thumbnail.png",
+    "brand": "GadgetMaster"
+  },
+  {
+    "id": 11,
+    "title": "Selfie Stick Monopod",
+    "price": 12.99,
+    "reviewScore": 2.93,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/Selfie%20Stick%20Monopod/thumbnail.png",
+    "brand": "SnapTech"
+  },
+  {
+    "id": 12,
+    "title": "TV Studio Camera Pedestal",
+    "price": 499.99,
+    "reviewScore": 4.05,
+    "image": "https://cdn.dummyjson.com/products/images/mobile-accessories/TV%20Studio%20Camera%20Pedestal/thumbnail.png",
+    "brand": "ProVision"
+  },
+  {
+    "id": 13,
+    "title": "Generic Motorcycle",
+    "price": 3999.99,
+    "reviewScore": 4.85,
+    "image": "https://cdn.dummyjson.com/products/images/motorcycle/Generic%20Motorcycle/thumbnail.png",
+    "brand": "Generic Motors"
+  },
+  {
+    "id": 14,
+    "title": "Kawasaki Z800",
+    "price": 8999.99,
+    "reviewScore": 4.06,
+    "image": "https://cdn.dummyjson.com/products/images/motorcycle/Kawasaki%20Z800/thumbnail.png",
+    "brand": "Kawasaki"
+  },
+  {
+    "id": 15,
+    "title": "MotoGP CI.H1",
+    "price": 14999.99,
+    "reviewScore": 4.15,
+    "image": "https://cdn.dummyjson.com/products/images/motorcycle/MotoGP%20CI.H1/thumbnail.png",
+    "brand": "MotoGP"
+  },
+  {
+    "id": 16,
+    "title": "Scooter Motorcycle",
+    "price": 2999.99,
+    "reviewScore": 3.33,
+    "image": "https://cdn.dummyjson.com/products/images/motorcycle/Scooter%20Motorcycle/thumbnail.png",
+    "brand": "ScootMaster"
+  },
+  {
+    "id": 17,
+    "title": "Sportbike Motorcycle",
+    "price": 7499.99,
+    "reviewScore": 2.97,
+    "image": "https://cdn.dummyjson.com/products/images/motorcycle/Sportbike%20Motorcycle/thumbnail.png",
+    "brand": "SpeedMaster"
+  },
+  {
+    "id": 18,
+    "title": "Attitude Super Leaves Hand Soap",
+    "price": 8.99,
+    "reviewScore": 4.68,
+    "image": "https://cdn.dummyjson.com/products/images/skin-care/Attitude%20Super%20Leaves%20Hand%20Soap/thumbnail.png",
+    "brand": "Attitude"
+  },
+  {
+    "id": 19,
+    "title": "Olay Ultra Moisture Shea Butter Body Wash",
+    "price": 12.99,
+    "reviewScore": 4.81,
+    "image": "https://cdn.dummyjson.com/products/images/skin-care/Olay%20Ultra%20Moisture%20Shea%20Butter%20Body%20Wash/thumbnail.png",
+    "brand": "Olay"
+  },
+  {
+    "id": 20,
+    "title": "Vaseline Men Body and Face Lotion",
+    "price": 9.99,
+    "reviewScore": 3.97,
+    "image": "https://cdn.dummyjson.com/products/images/skin-care/Vaseline%20Men%20Body%20and%20Face%20Lotion/thumbnail.png",
+    "brand": "Vaseline"
+  },
+  {
+    "id": 21,
+    "title": "iPhone 5s",
+    "price": 199.99,
+    "reviewScore": 3.92,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/iPhone%205s/thumbnail.png",
+    "brand": "Apple"
+  },
+  {
+    "id": 22,
+    "title": "iPhone 6",
+    "price": 299.99,
+    "reviewScore": 3.76,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/iPhone%206/thumbnail.png",
+    "brand": "Apple"
+  },
+  {
+    "id": 23,
+    "title": "iPhone 13 Pro",
+    "price": 1099.99,
+    "reviewScore": 3.42,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/iPhone%2013%20Pro/thumbnail.png",
+    "brand": "Apple"
+  },
+  {
+    "id": 24,
+    "title": "iPhone X",
+    "price": 899.99,
+    "reviewScore": 4.96,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/iPhone%20X/thumbnail.png",
+    "brand": "Apple"
+  },
+  {
+    "id": 25,
+    "title": "Oppo A57",
+    "price": 249.99,
+    "reviewScore": 3.1,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20A57/thumbnail.png",
+    "brand": "Oppo"
+  },
+  {
+    "id": 26,
+    "title": "Oppo F19 Pro Plus",
+    "price": 399.99,
+    "reviewScore": 2.57,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20F19%20Pro%20Plus/thumbnail.png",
+    "brand": "Oppo"
+  },
+  {
+    "id": 27,
+    "title": "Oppo K1",
+    "price": 299.99,
+    "reviewScore": 3.39,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Oppo%20K1/thumbnail.png",
+    "brand": "Oppo"
+  },
+  {
+    "id": 28,
+    "title": "Realme C35",
+    "price": 149.99,
+    "reviewScore": 2.56,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Realme%20C35/thumbnail.png",
+    "brand": "Realme"
+  },
+  {
+    "id": 29,
+    "title": "Realme X",
+    "price": 299.99,
+    "reviewScore": 4.42,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Realme%20X/thumbnail.png",
+    "brand": "Realme"
+  },
+  {
+    "id": 30,
+    "title": "Realme XT",
+    "price": 349.99,
+    "reviewScore": 4.14,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Realme%20XT/thumbnail.png",
+    "brand": "Realme"
+  },
+  {
+    "id": 31,
+    "title": "Samsung Galaxy S7",
+    "price": 299.99,
+    "reviewScore": 4.9,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S7/thumbnail.png",
+    "brand": "Samsung"
+  },
+  {
+    "id": 32,
+    "title": "Samsung Galaxy S8",
+    "price": 499.99,
+    "reviewScore": 3.69,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S8/thumbnail.png",
+    "brand": "Samsung"
+  },
+  {
+    "id": 33,
+    "title": "Samsung Galaxy S10",
+    "price": 699.99,
+    "reviewScore": 2.81,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Samsung%20Galaxy%20S10/thumbnail.png",
+    "brand": "Samsung"
+  },
+  {
+    "id": 34,
+    "title": "Vivo S1",
+    "price": 249.99,
+    "reviewScore": 2.83,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20S1/thumbnail.png",
+    "brand": "Vivo"
+  },
+  {
+    "id": 35,
+    "title": "Vivo V9",
+    "price": 299.99,
+    "reviewScore": 3.1,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20V9/thumbnail.png",
+    "brand": "Vivo"
+  },
+  {
+    "id": 36,
+    "title": "Vivo X21",
+    "price": 499.99,
+    "reviewScore": 2.75,
+    "image": "https://cdn.dummyjson.com/products/images/smartphones/Vivo%20X21/thumbnail.png",
+    "brand": "Vivo"
+  },
+  {
+    "id": 37,
+    "title": "American Football",
+    "price": 19.99,
+    "reviewScore": 3.78,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/American%20Football/thumbnail.png"
+  },
+  {
+    "id": 38,
+    "title": "Baseball Ball",
+    "price": 8.99,
+    "reviewScore": 4.76,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Baseball%20Ball/thumbnail.png"
+  },
+  {
+    "id": 39,
+    "title": "Baseball Glove",
+    "price": 24.99,
+    "reviewScore": 2.72,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Baseball%20Glove/thumbnail.png"
+  },
+  {
+    "id": 40,
+    "title": "Basketball",
+    "price": 14.99,
+    "reviewScore": 4.15,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Basketball/thumbnail.png"
+  },
+  {
+    "id": 41,
+    "title": "Basketball Rim",
+    "price": 39.99,
+    "reviewScore": 4.98,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Basketball%20Rim/thumbnail.png"
+  },
+  {
+    "id": 42,
+    "title": "Cricket Ball",
+    "price": 12.99,
+    "reviewScore": 4.43,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Cricket%20Ball/thumbnail.png"
+  },
+  {
+    "id": 43,
+    "title": "Cricket Bat",
+    "price": 29.99,
+    "reviewScore": 3.07,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Cricket%20Bat/thumbnail.png"
+  },
+  {
+    "id": 44,
+    "title": "Cricket Helmet",
+    "price": 44.99,
+    "reviewScore": 3.34,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Cricket%20Helmet/thumbnail.png"
+  },
+  {
+    "id": 45,
+    "title": "Cricket Wicket",
+    "price": 29.99,
+    "reviewScore": 4.16,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Cricket%20Wicket/thumbnail.png"
+  },
+  {
+    "id": 46,
+    "title": "Feather Shuttlecock",
+    "price": 5.99,
+    "reviewScore": 3.95,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Feather%20Shuttlecock/thumbnail.png"
+  },
+  {
+    "id": 47,
+    "title": "Football",
+    "price": 17.99,
+    "reviewScore": 3.94,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Football/thumbnail.png"
+  },
+  {
+    "id": 48,
+    "title": "Golf Ball",
+    "price": 9.99,
+    "reviewScore": 4.84,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Golf%20Ball/thumbnail.png"
+  },
+  {
+    "id": 49,
+    "title": "Iron Golf",
+    "price": 49.99,
+    "reviewScore": 4.87,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Iron%20Golf/thumbnail.png"
+  },
+  {
+    "id": 50,
+    "title": "Metal Baseball Bat",
+    "price": 29.99,
+    "reviewScore": 4.11,
+    "image": "https://cdn.dummyjson.com/products/images/sports-accessories/Metal%20Baseball%20Bat/thumbnail.png"
+  }
+]

@@ -10,6 +10,27 @@ services:
     ports:
       - "5433:5432"
 
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: always
+
+  redis_init:
+    build:
+      context: .
+      dockerfile: Dockerfile.redis-init
+    volumes:
+      - ./mock_products.json:/app/mock_products.json
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
   wishlist_api:
     image: wishlist_api
     entrypoint: ./entrypoint.sh
@@ -18,8 +39,11 @@ services:
       - "8000:8000"
     depends_on:
       - wishlist_database
+      - redis
+      - redis_init
     env_file:
       - .env.docker
 
 volumes:
   pgdata:
+  redis_data:
