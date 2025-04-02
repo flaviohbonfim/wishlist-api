@@ -1,5 +1,4 @@
 import logging
-import os
 import ssl
 from http import HTTPStatus
 from typing import Dict, Optional
@@ -11,10 +10,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.core.circuit_breaker import AsyncCircuitBreaker
 from src.core.redis import get_json
+from src.core.settings import Settings
 from src.models.product import Product as ProductModel
 from src.schemas.product import Product
-
-from .settings import Settings
 
 logger = logging.getLogger('uvicorn')
 
